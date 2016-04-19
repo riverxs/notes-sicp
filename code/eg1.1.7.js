@@ -28,6 +28,6 @@ function sqrt(x){
 	}
 	return sqrt_iter(1.0)
 }
-
-console.log(sqrt(2))
-console.log(sqrt(99))
+// 测试
+console.log(sqrt(2)) //1.4142156862745097
+console.log(sqrt(99)) //9.949874371188393
