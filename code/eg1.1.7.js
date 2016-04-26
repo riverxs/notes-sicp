@@ -21,11 +21,19 @@ function sqrt(x){
 	function improve(guess){
 		return averge(guess, x/guess)
 	}
-	// 递归算出平方根，先判断guess值，精度不足则不断逼近要求精度的值
-	function sqrt_iter(guess){
-		if(good_enough(guess)) return guess
-		else return sqrt_iter(improve(guess))
+	function newIf(predicate, thenClause, elseClause){
+		if(predicate) return thenClause
+		else return elseClause
 	}
+	// 递归算出平方根，先判断guess值，精度不足则不断逼近要求精度的值
+	// function sqrt_iter(guess){
+	// 	if(good_enough(guess)) return guess
+	// 	else return sqrt_iter(improve(guess))
+	// }
+	function sqrt_iter(guess){
+		return newIf(good_enough(), guess, sqrt_iter(improve(guess)))
+	}
+	
 	return sqrt_iter(1.0)
 }
 // 测试
