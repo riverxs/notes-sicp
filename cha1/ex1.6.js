@@ -35,7 +35,7 @@ function sqrt(x){
 	}
 	// newIf改写的求平方根程序
 	function sqrt_iter(guess){
-		newIf(good_enough(guess), guess, sqrt_iter(improve(guess)))
+		return newIf(good_enough(guess), guess, sqrt_iter(improve(guess)))
 	}
 	
 	return sqrt_iter(1.0)
@@ -44,4 +44,11 @@ function sqrt(x){
 console.log(sqrt(2)) // newif.html:39 Uncaught RangeError: Maximum call stack size exceeded
 
 // 测试结果：栈溢出
-// why? 改写后递归调用每次都需要调用newIf新函数，调用栈需要维护更多状态，栈的生长太快，导致栈很快就溢出
+// 
+// 1. 无论good_enough(guess)为true或false，sqrt_iter都会递归下去
+// why? newIf函数的过程计算的代换模型为应用序求值策略，先求实参再应用，而newIf中第三参数为
+// sqrt_iter()函数，也就是说不论good_enough()结果如何，都会先递归sqrt_iter()
+// ，而后调用newIf(), 再递归......
+// 2.sqrt-iter 函数的返回值要被 new-if 作为参数使用，所以对 sqrt-iter 
+// 的调用并不是尾递归，这样的话，尾递归优化自然也无法进行了，因此 new-if 和 sqrt-iter 
+// 的递归会最终突破解释器的最大递归深度，从而造成错误：
