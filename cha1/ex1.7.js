@@ -43,7 +43,7 @@ function sqrt(x){
 
 console.log(sqrt(2)) //1.4142156862745097
 console.log(sqrt(99)) //9.949874371188393
-console.log(sqrt(0.00000009))//0.007816339388305803 错误
+console.log(sqrt(0.00000009))//0.007816339388305803 结果错误
 console.log(sqrt(0.00000009)*sqrt(0.00000009))//0.00006109516143318073
 console.log(sqrt(9999999999999999999999999999999))//RangeError: Maximum call stack size exceeded, 大数精度问题
 
