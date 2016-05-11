@@ -96,3 +96,46 @@ function factorial_4(n){
 }
 console.log(factorial_4(6)) // 720
 
+
+// 树形递归计算模式
+
+// 典型代表斐波那契数列Fibonacci
+// 递归表示该计算有太多冗余计算，计算步骤数随着输入指数增长，空间需求随着输入增长线性增长
+
+function Fib(n) {
+	if(n===0) return 0
+	if(n===1) return 1
+	else {
+		return Fib(n-1) + Fib(n-2)
+	}
+}
+console.log(Fib(5)) // 5
+
+// 计算轨迹
+// Fib(4) + Fib(3)
+// (Fib(3) + Fib(2)) + (Fib(2) + Fib(1))
+// ((Fib(2) + Fib(1)) + (Fib(1) + Fib(0))) + (F(1) + Fib(0) + Fib(1))
+// ((Fib(1) + Fib(0) + Fib(1)) + (Fib(1) + Fib(0))) + (F(1) + Fib(0) + Fib(1))
+// => 5
+
+// 迭代计算表示上述过程，状态变量的迭代
+
+function fib(n){
+	function fib_iter(a,b,count){
+		if(count === 0) return b
+		return fib_iter(a+b, a, count - 1)
+	}
+	return fib_iter(1, 0, n)
+}
+console.log(fib(5)) // 5
+
+//计算过程
+
+// fib(5)
+// fib_iter(1, 0, 5)
+// fib_iter(1, 1, 4)
+// fib_iter(2, 1, 3)
+// fib_iter(3, 2, 2)
+// fib_iter(5, 3, 1)
+// fib_iter(8, 5, 0)
+// => 5
