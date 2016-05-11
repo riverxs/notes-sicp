@@ -139,3 +139,14 @@ console.log(fib(5)) // 5
 // fib_iter(5, 3, 1)
 // fib_iter(8, 5, 0)
 // => 5
+
+// 等价于
+function fib2(n){
+	let a = 1, b = 0, c = n - 1
+	for(; c >= 0; c--){
+		a = a + b
+		b = a - b
+	}
+	return b
+}
+console.log(fib2(5)) // 5
