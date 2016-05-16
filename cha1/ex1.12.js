@@ -13,6 +13,7 @@ function pascalTriangle(i, j) {
 	return pascalTriangle(i-1, j-1) + pascalTriangle(i-1, j)
 }
 
+// 测试
 for(var i=0; i<6; i++) {
 	for(var j=0; j<=i; j++){
 		console.log(pascalTriangle(i, j))
@@ -41,3 +42,44 @@ for(var i=0; i<6; i++) {
 // 10
 // 5
 // 1
+
+// 双循环用递归表示来测试
+// 外迭代定义
+function printPTI(i) {
+	// 内迭代定义
+	function printPTJ(m, n) {
+		if(m + 1 === n) return 
+		console.log(pascalTriangle(m, n))
+		return printPTJ(m, n+1)
+	}
+
+	if(i === 6) return 
+	printPTJ(i, 0)
+	return printPTI(i+1)
+}
+
+printPTI(0)
+// 结果如下
+
+// 1
+// 1
+// 1
+// 1
+// 2
+// 1
+// 1
+// 3
+// 3
+// 1
+// 1
+// 4
+// 6
+// 4
+// 1
+// 1
+// 5
+// 10
+// 10
+// 5
+// 1
+
