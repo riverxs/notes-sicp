@@ -21,7 +21,7 @@ $Fib(n+1) = {\phi^{n+1}-\gamma^{n+1}\over\sqrt{5}}={\phi^{n}\phi-\gamma^{n}\gamm
 $Fib(n+2) = {\phi^{n+2}-\gamma^{n+2}\over\sqrt{5}}={\phi^{n}\phi^2-\gamma^{n}\gamma^2\over\sqrt{5}} ={\phi^{n}({1+\sqrt{5}\over2})^2-\gamma^{n}({1-\sqrt{5}\over2})^2\over\sqrt{5}}={3(\phi^n-\gamma^n)\over2\sqrt{5}}+{\sqrt{5}(\phi^n+\gamma^n)\over2\sqrt{5}}={3\over2}Fib(n)+{\phi^n+\gamma^n\over2}$
 
 得
-$Fib(n+2)=Fib(n-1)+Fib(n)$
+$Fib(n+2)=Fib(n+1)+Fib(n)$
 
 由上证明
 $Fib(n) = {\phi^n - \gamma^n\over\sqrt{5}}$
