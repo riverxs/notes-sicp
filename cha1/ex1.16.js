@@ -19,7 +19,8 @@ function fast_expt(b,n){
 console.log(fast_expt(2,10)) // 1024
 
 // 改写成迭代计算过程模型
-// 引入状态变量b,n,a，迭代过程中(即状态变量变换后)ab^n保持不变
+// 引入状态变量b,n,a，迭代过程中(即状态变量变换后)a*b^n保持不变
+
 function fast_expt_iter(b,n) {
 	function expt_iter(b,n,a){
 		if(n===0) return a
@@ -28,6 +29,7 @@ function fast_expt_iter(b,n) {
 	}
 	return expt_iter(b, n, 1)
 }
+
 // 测试
 console.log(fast_expt_iter(2,9)) // 512
 console.log(fast_expt_iter(2,10)) // 1024

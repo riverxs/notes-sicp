@@ -16,9 +16,11 @@
 
 (define (halve x)
   (/ x 2))
+
 (define (iter_multi a b)
 	fast_iter_multi(a b 0))
 
+;; 引入c状态变量，当b为偶数时，c=c，当b为奇数时，c=a+c
 (define (fast_iter_multi a b c)
   (cond ((= b 0) c)
         ((even? b) (fast_iter_multi (double a) (halve b) c))
