@@ -43,7 +43,7 @@ function sum(term, a, next, b){
     return term(a) + sum(term, next(a), next, b)
 }
 
-// 基于sumPattern定义sumIntegers
+// 基于sum定义intergerSum2
 
 function identify(x){
 	return x
@@ -59,14 +59,14 @@ function intergerSum2(a,b){
 console.log(intergerSum2(1,100))  // 5050
 
 
-// 基于sumPattern定义sumCubes 
+// 基于sum定义cubeSum2 
 
 function cubeSum2(a,b) {
 	return sum(cube, a, inc, b)
 }
 console.log(cubeSum2(1,10)) // 3025
 
-// 基于sumPattern定义piSum
+// 基于sum定义piSum2
 
 function piSum2(a, b){
 	function piTerm(x){
@@ -81,7 +81,7 @@ console.log(8*piSum2(1,1000)) // 3.139592655589783
 
 // 求函数f在范围a和b之间的定积分的近似值
 // 即求[f(a + dx/2) + f(a + dx + dx/2) + f(a + 2dx + dx/2) + ....]*dx
-// 以sumPattern作为基本构件去形式化该概念
+// 以sum作为基本构件去形式化该概念
 
 function integral(f, a, b, dx){
 	function add_dx(x){
@@ -90,3 +90,4 @@ function integral(f, a, b, dx){
 	return sum(f, a+dx/2, add_dx, b) * dx
 }
 console.log(integral(cube, 0, 1, 0.01)) // 0.24998750000000042
+
