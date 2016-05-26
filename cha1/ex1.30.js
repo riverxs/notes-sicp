@@ -1,4 +1,4 @@
-// 改写eg1.3.1中的sum函数递归计算模型为迭代计算模型
+// 改写eg1.3.1中的sum函数线性递归计算模型为线性迭代计算模型
 function sum(term, a, next, b){
 	function iter(a, result){
 		if(a > b) return result
