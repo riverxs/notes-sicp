@@ -77,8 +77,6 @@ console.log(factorial(6)) // 720
 // ———————————————————————— 分割线 ——————————————————————
 
 
-
-
 // 改写上面的accumulate递归计算为迭代计算模型 
 function accumulate2(combiner, null_value, term, a, next, b) {
 	function iter(a, result){
@@ -96,7 +94,7 @@ function sum3(term, a, next, b) {
 	return combiner(term(a), accumulate2(combiner, 0, term, next(a), next, b))
 }
 
-// 重新定义的product3
+// 根据accumulate2定义的product3
 function product3(term, a, next, b){
 	function combiner(x, y) {
 		return x * y
@@ -109,7 +107,7 @@ function product3(term, a, next, b){
 // 以下为对accumulate2的测试函数  // ^@^ ^@^ ^@^
 //
 
-// 基于sum2定义intergerSum
+// 基于sum3定义intergerSum
 
 function intergerSum2(a,b){
 	function inc(n) {
@@ -121,7 +119,7 @@ function intergerSum2(a,b){
 console.log(intergerSum2(1,100))  // 5050
 
 
-// 用product2定义阶乘
+// 用product3定义阶乘
 
 function factorial2(n) {
 	function next(x) {
@@ -136,4 +134,4 @@ console.log(factorial2(5)) // 120
 console.log(factorial2(6)) // 720
 
 
-// 测试正确
+// 测试正确 
