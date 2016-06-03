@@ -9,20 +9,20 @@ function cont_frac(n, d, k) {
 
 console.log(cont_frac(i=>1.0, i=>1.0, 1000)) //0.6180339887498948
 
-function goodEnough(v1, v2) {
+function good_enough(v1, v2) {
 	return Math.abs(v1 - v2) < 0.0001
 }
 
-function find_good_k(f, k){
+function find_good_k_and_e(f, k){
 	var v1 = f(i => 1.0, i => 1.0, k)
 	var v2 = f(i => 1.0, i => 1.0, k+1)
-	if(goodEnough(v1, v2)){
+	if(good_enough(v1, v2)){
 		return k
 	}else{
-		return find_good_k(f, k+1)
+		return find_good_k_and_e(f, k+1)
 	}
 }
-console.log(find_good_k(cont_frac, 1)) // 10
+console.log(find_good_k_and_e(cont_frac, 1)) // 10
 
 // ------------------------第二小题--------------------------------
 // 将上述计算过程改写(如果递归计算过程，改写迭代计算，反之同样)
