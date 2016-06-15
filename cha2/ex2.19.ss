@@ -19,7 +19,7 @@
 		  	(+ (cc amount (except-first-denomination coins-values))
 		  	   (cc (- amount (first-denomination coins-values)) coins-values)))))
 
-; test
+; test 
 (cc 100 us-coins) ; 292
 (cc 100 uk-coins) ; 104561
 
