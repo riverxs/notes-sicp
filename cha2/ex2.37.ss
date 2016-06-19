@@ -45,6 +45,7 @@
 (transpose m) ; ((1 4 6) (2 5 7) (3 6 8) (4 6 9))
 
 (define n (list (list 1 4 6) (list 2 5 7) (list 3 6 8) (list 4 6 9)))
+
 ; 返回矩阵P, 其中Pij = ∑kMikNkj(i,j,k为下标)
 (define (matrix-*-matrix m n)
 	(let ((cols (transpose n)))
