@@ -1,4 +1,3 @@
-// ex1.16.js
 
 // 辅助基本过程
 function square(x){
