@@ -23,3 +23,10 @@ function fact-iter(product, counter, max-count) {
 
 请说明采用过程factorial的上述求值factorial(6)时创建的环境结构
 
+递归版本的环境结构:
+
+![recursion](../img/recursion.PNG)
+
+迭代版本的环境结构:
+
+![iteration](../img/iter.PNG)
