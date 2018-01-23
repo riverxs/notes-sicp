@@ -12,7 +12,7 @@ function factorial(n) {
 
 ```js
 function factorial(n) {
-  return fact-iter(1,1,n)
+  return fact-iter(1, 1, n)
 }
 
 function fact-iter(product, counter, max-count) {
