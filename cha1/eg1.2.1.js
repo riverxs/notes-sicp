@@ -4,11 +4,11 @@
 // 收缩阶段开始真正的计算
 // 这种类型的计算过程由一个推迟进行的运算链条来描述，称之为线性递归计算过程
 
-function factorial_1(n){
-	if(n === 1) return 1
-	return n * factorial_1(n - 1)
+function factorial_1(n) {
+  if (n === 1) return 1;
+  return n * factorial_1(n - 1);
 }
-console.log(factorial_1(6)) //720
+console.log(factorial_1(6)); //720
 
 // 计算轨迹如下
 
@@ -24,7 +24,6 @@ console.log(factorial_1(6)) //720
 // 6*120
 // 720
 
-
 // 尾递归（递归描述的迭代计算过程，常规的过程调用表达迭代）
 
 // 区分递归计算过程和递归过程
@@ -32,22 +31,20 @@ console.log(factorial_1(6)) //720
 // 递归计算过程：说的是该计算过程的进展方式，而不是相应的语法形式
 // 递归过程产生迭代计算过程：尽管该过程还是由递归表达，但是计算过程却是迭代的，计算过程完全由状态变量刻画，解释器在执行时，只需维护最新的状态变量就够了
 
-
 // 用固定数目的状态变量描述的计算过程，在此为counter，total。
 // 同时又有一套规则描述计算过程在从上一个状态到下一个状态转变时这些状态变量的更新方式，此处状态变量更新方式分别为counter - 1和 counter * total
 // 同时还有一个(可能有的，没有的话就是死循环)结束检测，它描述了这一计算过程应该终止的条件
 // 该计算过程中解释器只需维护状态变量的轨迹就行了，因而总能在常量空间完成计算,空间复杂度O(1)
 // 尾递归的实现完全可以取代循环，也让那些复杂的专用迭代结构变成不过是语法糖衣
 
-
 function factorial_2(n) {
-	function factorial(counter, total){
-		if(counter === 1) return total
-		return factorial(counter - 1, counter * total)
-	}
-	return factorial(n, 1)
+  function factorial(counter, total) {
+    if (counter === 1) return total;
+    return factorial(counter - 1, counter * total);
+  }
+  return factorial(n, 1);
 }
-console.log(factorial_2(6)) //720
+console.log(factorial_2(6)); //720
 
 // 计算轨迹
 
@@ -61,14 +58,14 @@ console.log(factorial_2(6)) //720
 
 // 同上，迭代型计算过程
 function factorial_3(n) {
-	function fact_iter(total, counter){
-		if(counter > n) return total
-		return fact_iter(total * counter, counter + 1)
-	}
-	return fact_iter(1,1)	
+  function fact_iter(total, counter) {
+    if (counter > n) return total;
+    return fact_iter(total * counter, counter + 1);
+  }
+  return fact_iter(1, 1);
 }
 
-console.log(factorial_3(6)) //720
+console.log(factorial_3(6)); //720
 
 // 计算轨迹
 
@@ -81,21 +78,18 @@ console.log(factorial_3(6)) //720
 // fact_iter(120,6)
 // fact_iter(720,7)
 
-
-
 // 循环表达迭代过程
 
-function factorial_4(n){
-	var fact = 1
-	// 循环表达迭代, 需要用到语言提供的专用迭代结构
-	// 交代各种细节：状态变量的声明，退出条件，状态变量的变化方式
-	for(var i = 1; i <= n; i++){
-		fact = fact * i
-	}
-	return fact
+function factorial_4(n) {
+  var fact = 1;
+  // 循环表达迭代, 需要用到语言提供的专用迭代结构
+  // 交代各种细节：状态变量的声明，退出条件，状态变量的变化方式
+  for (var i = 1; i <= n; i++) {
+    fact = fact * i;
+  }
+  return fact;
 }
-console.log(factorial_4(6)) // 720
-
+console.log(factorial_4(6)); // 720
 
 // 树形递归计算模式
 
@@ -103,13 +97,13 @@ console.log(factorial_4(6)) // 720
 // 递归表示该计算有太多冗余计算，计算步骤数随着输入指数增长，空间需求随着输入增长线性增长
 
 function Fib(n) {
-	if(n===0) return 0
-	if(n===1) return 1
-	else {
-		return Fib(n-1) + Fib(n-2)
-	}
+  if (n === 0) return 0;
+  if (n === 1) return 1;
+  else {
+    return Fib(n - 1) + Fib(n - 2);
+  }
 }
-console.log(Fib(5)) // 5
+console.log(Fib(5)); // 5
 
 // 计算轨迹
 // Fib(4) + Fib(3)
@@ -120,14 +114,14 @@ console.log(Fib(5)) // 5
 
 // 迭代计算表示上述过程，状态变量的迭代
 
-function fib(n){
-	function fib_iter(a,b,count){
-		if(count === 0) return b
-		return fib_iter(a+b, a, count - 1)
-	}
-	return fib_iter(1, 0, n)
+function fib(n) {
+  function fib_iter(a, b, count) {
+    if (count === 0) return b;
+    return fib_iter(a + b, a, count - 1);
+  }
+  return fib_iter(1, 0, n);
 }
-console.log(fib(5)) // 5
+console.log(fib(5)); // 5
 
 //计算过程
 
@@ -141,12 +135,14 @@ console.log(fib(5)) // 5
 // => 5
 
 // 等价于
-function fib2(n){
-	let a = 1, b = 0, c = n - 1
-	for(; c >= 0; c--){
-		a = a + b
-		b = a - b
-	}
-	return b
+function fib2(n) {
+  let a = 1,
+    b = 0,
+    c = n - 1;
+  for (; c >= 0; c--) {
+    a = a + b;
+    b = a - b;
+  }
+  return b;
 }
-console.log(fib2(5)) // 5
+console.log(fib2(5)); // 5

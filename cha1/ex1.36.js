@@ -1,28 +1,28 @@
-var tolerance = 0.00001
-var N = 0
+var tolerance = 0.00001;
+var N = 0;
 // 修改ex1.35中的fixedPoint，使它能打印计算中产生的近似值序列
-function fixedPoint(f, firstGuess){
-	function closeEnough(v1, v2) {
-		return Math.abs(v1 - v2) < tolerance
-	}
-	function tryFixed(guess) {
-		var next = f(guess)
-		// 打印出计算过程中产生的近似值
-		++N
-		console.log(N+': '+next+'\r')
-		if(closeEnough(guess, next)) {
-			return next
-		}
-		return tryFixed(next)
-	}
-	return tryFixed(firstGuess)
+function fixedPoint(f, firstGuess) {
+  function closeEnough(v1, v2) {
+    return Math.abs(v1 - v2) < tolerance;
+  }
+  function tryFixed(guess) {
+    var next = f(guess);
+    // 打印出计算过程中产生的近似值
+    ++N;
+    console.log(N + ": " + next + "\r");
+    if (closeEnough(guess, next)) {
+      return next;
+    }
+    return tryFixed(next);
+  }
+  return tryFixed(firstGuess);
 }
 
 // 找出f(x) = log(1000)/log(x)的不动点
 
 // 不用平均阻尼技术的计算
 
-console.log(fixedPoint(x => Math.log(1000)/Math.log(x), 2.0))
+console.log(fixedPoint(x => Math.log(1000) / Math.log(x), 2.0));
 
 // 1: 9.965784284662087
 // 2: 3.004472209841214
@@ -60,10 +60,9 @@ console.log(fixedPoint(x => Math.log(1000)/Math.log(x), 2.0))
 // 34: 4.555532270803653
 // 4.555532270803653
 
-
 // 采用阻尼技术
 
-console.log(fixedPoint(x => (Math.log(1000)/Math.log(x) + x)/2, 2.0))
+console.log(fixedPoint(x => (Math.log(1000) / Math.log(x) + x) / 2, 2.0));
 
 // 1: 5.9828921423310435
 // 2: 4.922168721308343
