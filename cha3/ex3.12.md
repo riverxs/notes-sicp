@@ -1,4 +1,4 @@
-## cons的构造函数定义
+## cons 的构造函数定义
 
 ```scheme
 (define (cons x y)
@@ -9,19 +9,18 @@
 )
 ```
 
-练习3.12
+练习 3.12
 
-题目略，见sicp page175...
+题目略，见 sicp page175...
 
-问？
-考虑下面交互
+问？考虑下面交互
 
 ```scheme
 (define x (list 'a 'b))
 (define y (list 'c 'd))
 (define z (append x y))
 
-z 
+z
 (a b c d)
 
 (cdr x)
@@ -39,11 +38,12 @@ w
 
 答：
 
-第一个response: **(b)**
-
-第二个response: **(b c d)**
+第一个 response: **(b)**
 
 图示：
-![](../img/)
+![](../img/312_1.png)
 
+第二个 response: **(b c d)**
 
+图示:
+![](../img/312_2.png)
